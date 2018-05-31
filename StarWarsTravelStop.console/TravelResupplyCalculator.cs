@@ -13,15 +13,17 @@ namespace StarWarsTravelStop.console
     {
         private List<Starship> _starShips;
         private int _megaLightDistance;
+        IRequestClient _requestClient;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="megaLightDistance">value use to calculate the number of stops</param>
-        public TravelResupplyCalculator(int megaLightDistance)
+        public TravelResupplyCalculator(int megaLightDistance, IRequestClient requestClient)
         {
             _starShips = new List<Starship>();
             _megaLightDistance = megaLightDistance;
+            _requestClient = requestClient;
         }
 
         /// <summary>
@@ -51,8 +53,7 @@ namespace StarWarsTravelStop.console
 
         private void LoadStarships()
         {
-            var requestClient = new RequestClient();
-            _starShips = requestClient.GetAllStarships();
+            _starShips = _requestClient.GetAllStarships();
         }
 
 

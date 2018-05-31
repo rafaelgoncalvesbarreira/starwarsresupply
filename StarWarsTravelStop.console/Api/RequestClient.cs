@@ -12,7 +12,7 @@ namespace StarWarsTravelStop.console.Api
     /// <summary>
     /// Class responsible for deal with all the aspect of the REST api from swapi.com
     /// </summary>
-    public class RequestClient
+    public class RequestClient : IRequestClient
     {
         private const string API_URL = "https://swapi.co/api/starships/";
 

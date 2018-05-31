@@ -1,4 +1,5 @@
-﻿using StarWarsTravelStop.console.Model;
+﻿using StarWarsTravelStop.console.Api;
+using StarWarsTravelStop.console.Model;
 using System;
 
 namespace StarWarsTravelStop.console
@@ -14,10 +15,10 @@ namespace StarWarsTravelStop.console
                 {
                     throw new ArgumentException("You need to inform the input distance");
                 }
-                double inputDistance;
-                if (Double.TryParse(args[0], out inputDistance))
+                int inputDistance;
+                if (int.TryParse(args[0], out inputDistance))
                 {
-                    var calculator = new TravelStopCalculator(inputDistance);
+                    var calculator = new TravelResupplyCalculator(inputDistance, new RequestClient());
                     var result = calculator.CalculateAllStops();
                     foreach (StopNeeded stopInfo in result)
                     {
