@@ -8,10 +8,10 @@ namespace StarWarsTravelStop.console.Model
     {
         public string name { get; set; }
         public string MGLT{ get; set; }
-        public double? MGLTNumber {
+        public int? MGLTNumber {
             get {
-                double result;
-                if(Double.TryParse(MGLT,out result))
+                int result;
+                if(int.TryParse(MGLT,out result))
                 {
                     return result;
                 }

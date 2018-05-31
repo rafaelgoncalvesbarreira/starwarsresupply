@@ -9,8 +9,9 @@ namespace XUnitTestProject
         [Fact]
         public void Test1()
         {
-            var calculator = new TravelStopCalculator(10);
-            calculator.CalculateStops();
+            var calculator = new TravelStopCalculator(1000000);
+            var result = calculator.CalculateAllStops();
+            
         }
     }
 }
