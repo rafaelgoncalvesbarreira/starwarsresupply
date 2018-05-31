@@ -9,7 +9,7 @@ namespace StarWarsTravelStop.console.Model
     /// </summary>
     public class Starship
     {
-        private const string UNKNOWN = "unknown";
+        public const string UNKNOWN_STAT = "unknown";
 
         public string name { get; set; }
         public string MGLT{ get; set; }
@@ -29,7 +29,7 @@ namespace StarWarsTravelStop.console.Model
         /// </summary>
         public bool isUnknow {
             get {
-                return MGLT.Equals(UNKNOWN, StringComparison.InvariantCultureIgnoreCase);
+                return MGLT.Equals(UNKNOWN_STAT, StringComparison.InvariantCultureIgnoreCase);
             }
         }
     }
