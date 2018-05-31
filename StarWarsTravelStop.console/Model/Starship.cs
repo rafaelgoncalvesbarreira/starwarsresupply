@@ -4,10 +4,16 @@ using System.Text;
 
 namespace StarWarsTravelStop.console.Model
 {
+    /// <summary>
+    /// Represent a Starship from Star Wars. Provides info required to calculate how many stops it will need
+    /// </summary>
     public class Starship
     {
+        private const string UNKNOWN = "unknown";
+
         public string name { get; set; }
         public string MGLT{ get; set; }
+        public string consumables { get; set; }
         public int? MGLTNumber {
             get {
                 int result;
@@ -17,7 +23,14 @@ namespace StarWarsTravelStop.console.Model
                 }
                 return null;
             }
-        } 
-        public string consumables { get; set; }
+        }
+        /// <summary>
+        /// this property inform when a starship doesn't have all information about its stats.  
+        /// </summary>
+        public bool isUnknow {
+            get {
+                return MGLT.Equals(UNKNOWN, StringComparison.InvariantCultureIgnoreCase);
+            }
+        }
     }
 }

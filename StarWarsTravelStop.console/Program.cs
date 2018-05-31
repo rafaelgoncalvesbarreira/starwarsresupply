@@ -21,7 +21,14 @@ namespace StarWarsTravelStop.console
                     var result = calculator.CalculateAllStops();
                     foreach (StopNeeded stopInfo in result)
                     {
-                        Console.WriteLine($"{stopInfo.starship.name}: {stopInfo.numberOfStop}");
+                        if (!stopInfo.starship.isUnknow)
+                        {
+                            Console.WriteLine($"{stopInfo.starship.name}: {stopInfo.numberOfStop}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"{stopInfo.starship.name}: couldn't calculate");
+                        }
                     }
                 }
                 else

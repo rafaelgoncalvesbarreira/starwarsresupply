@@ -5,7 +5,10 @@ using System.Text;
 
 namespace StarWarsTravelStop.console.Model.Api
 {
-    public class SWResponse
+    /// <summary>
+    /// Represent a response for the API, with all member needed
+    /// </summary>
+    public class ApiResponse
     {
         public int count { get; set; }
         public String next { get; set; }

@@ -6,30 +6,43 @@ using System.Collections.Generic;
 
 namespace StarWarsTravelStop.console
 {
-    public class TravelStopCalculator
+    /// <summary>
+    /// Calcules the number of stops for resupply from all starships
+    /// </summary>
+    public class TravelResupplyCalculator
     {
         private List<Starship> _starShips;
-        private double _megaLightDistance;
+        private int _megaLightDistance;
 
-        public TravelStopCalculator(double megaLightDistance)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="megaLightDistance">value use to calculate the number of stops</param>
+        public TravelResupplyCalculator(int megaLightDistance)
         {
             _starShips = new List<Starship>();
             _megaLightDistance = megaLightDistance;
         }
 
-
+        /// <summary>
+        /// Make the calculation of number of stops needed
+        /// </summary>
+        /// <returns>a collection of all starships and the total amount of stops required to make the distance</returns>
         public List<StopNeeded> CalculateAllStops()
         {
             var result = new List<StopNeeded>();
             LoadStarships();
 
-            foreach(Starship starship in _starShips)
+            foreach (Starship starship in _starShips)
             {
                 var starshipInfo = new StopNeeded
                 {
                     starship = starship
                 };
-                starshipInfo.numberOfStop = calculateNumberOfStops(starship);
+                if (!starship.isUnknow)
+                {
+                    starshipInfo.numberOfStop = calculateNumberOfStops(starship);
+                }
 
                 result.Add(starshipInfo);
             }
@@ -42,14 +55,11 @@ namespace StarWarsTravelStop.console
             _starShips = requestClient.GetAllStarships();
         }
 
-        
 
         private int calculateNumberOfStops(Starship starship)
         {
-            //mglt * 24 hours = 1 day = move in the month
-            //megaLightDistance / (mov * consumables in  days)
             int stopNeeded = 0;
-            if (starship.MGLTNumber.HasValue)
+            if (!starship.isUnknow)
             {
                 int movimentInOneDay = starship.MGLTNumber.Value * 24;
                 int consumablesInDays = ConsumablesToDays(starship.consumables);
@@ -63,11 +73,12 @@ namespace StarWarsTravelStop.console
         {
             var splitted = consumables.Split(" ");
             var number = int.Parse(splitted[0]);
+            var descriptor = splitted[1];
 
-            ConsumableTimeEnum intervalSelected=ConsumableTimeEnum.DAY;
+            ConsumableTimeEnum intervalSelected = ConsumableTimeEnum.DAY;
             foreach (ConsumableTimeEnum enumItem in ConsumableTimeEnum.GetAll())
             {
-                if (splitted[1].Contains(enumItem.TimeDescriptor))
+                if (descriptor.Contains(enumItem.TimeDescriptor))
                 {
                     intervalSelected = enumItem;
                     break;

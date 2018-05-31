@@ -4,11 +4,25 @@ using System.Text;
 
 namespace StarWarsTravelStop.console.Enums
 {
+    /// <summary>
+    /// Represents the types of interval a Starship can carry of consumables. It's can be from days, weeks, month until years.
+    /// </summary>
     public class ConsumableTimeEnum
     {
+        /// <summary>
+        /// the value used to convert this period to days
+        /// </summary>
         public int DaysMultiplier { get; private set; }
+        /// <summary>
+        /// What kind of times it is, it can be Day, Week, Month or Year
+        /// </summary>
         public string TimeDescriptor { get; private set; }
 
+        /// <summary>
+        /// A private constructor to emulate a Enum
+        /// </summary>
+        /// <param name="timeDescriptor"></param>
+        /// <param name="daysMultiplier"></param>
         private ConsumableTimeEnum(string timeDescriptor, int daysMultiplier)
         {
             TimeDescriptor = timeDescriptor;
