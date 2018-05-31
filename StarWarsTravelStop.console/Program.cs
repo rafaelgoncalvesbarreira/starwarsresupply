@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StarWarsTravelStop.console.Model;
+using System;
 
 namespace StarWarsTravelStop.console
 {
@@ -16,12 +17,12 @@ namespace StarWarsTravelStop.console
                 double inputDistance;
                 if (Double.TryParse(args[0], out inputDistance))
                 {
-                    //var calculator = new TravelStopCalculator
-                    //{
-                    //    MegaLightDistance = inputDistance
-                    //};
-                    //var result = calculator.CalculateStops();
-                    //Console.WriteLine($"${result.starship.Name} need ");
+                    var calculator = new TravelStopCalculator(inputDistance);
+                    var result = calculator.CalculateAllStops();
+                    foreach (StopNeeded stopInfo in result)
+                    {
+                        Console.WriteLine($"{stopInfo.starship.name}: {stopInfo.numberOfStop}");
+                    }
                 }
                 else
                 {
@@ -31,13 +32,6 @@ namespace StarWarsTravelStop.console
             catch (Exception ex)
             {
                 Console.WriteLine($"A erro ocurred: {ex.Message}");
-            }
-
-
-            Console.WriteLine("Hello World!");
-            foreach (String arg in args)
-            {
-                Console.WriteLine(arg);
             }
         }
     }

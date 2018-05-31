@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "StarWarsTravelStop.console": {
+      "commandName": "Project",
+      "commandLineArgs": "1000000"
+    }
+  }
+}

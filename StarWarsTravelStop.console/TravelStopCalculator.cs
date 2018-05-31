@@ -43,7 +43,7 @@ namespace StarWarsTravelStop.console
 
                 result.Add(starshipInfo);
             }
-            return null;
+            return result;
         }
 
         private void LoadStarships()
