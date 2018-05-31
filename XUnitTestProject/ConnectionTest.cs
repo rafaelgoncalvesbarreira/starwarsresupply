@@ -4,7 +4,7 @@ using Xunit;
 
 namespace XUnitTestProject
 {
-    public class UnitTest1
+    public class ConnectionTest
     {
         [Fact]
         public void Test1()
