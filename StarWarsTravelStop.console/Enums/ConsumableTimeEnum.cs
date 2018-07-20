@@ -7,7 +7,7 @@ namespace StarWarsTravelStop.console.Enums
     /// <summary>
     /// Represents the types of interval a Starship can carry of consumables. It's can be from days, weeks, month until years.
     /// </summary>
-    public class ConsumableTimeEnum
+    public struct ConsumableTime
     {
         /// <summary>
         /// the value used to convert this period to days
@@ -23,20 +23,20 @@ namespace StarWarsTravelStop.console.Enums
         /// </summary>
         /// <param name="timeDescriptor"></param>
         /// <param name="daysMultiplier"></param>
-        private ConsumableTimeEnum(string timeDescriptor, int daysMultiplier)
+        private ConsumableTime(string timeDescriptor, int daysMultiplier)
         {
             TimeDescriptor = timeDescriptor;
             DaysMultiplier = daysMultiplier;
         }
 
-        public static ConsumableTimeEnum DAY = new ConsumableTimeEnum("day", 1);
-        public static ConsumableTimeEnum WEEK = new ConsumableTimeEnum("week", 7);
-        public static ConsumableTimeEnum MONTH = new ConsumableTimeEnum("month", 30);
-        public static ConsumableTimeEnum YEAR = new ConsumableTimeEnum("year", 360);
+        public static readonly ConsumableTime DAY = new ConsumableTime("day", 1);
+        public static readonly ConsumableTime WEEK = new ConsumableTime("week", 7);
+        public static readonly ConsumableTime MONTH = new ConsumableTime("month", 30);
+        public static readonly ConsumableTime YEAR = new ConsumableTime("year", 360);
 
-        public static List<ConsumableTimeEnum> GetAll()
+        public static List<ConsumableTime> GetAll()
         {
-            return new List<ConsumableTimeEnum>()
+            return new List<ConsumableTime>()
             {
                 DAY, WEEK, MONTH, YEAR
             };

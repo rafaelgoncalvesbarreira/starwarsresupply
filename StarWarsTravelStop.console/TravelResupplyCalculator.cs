@@ -76,12 +76,12 @@ namespace StarWarsTravelStop.console
             var number = int.Parse(splitted[0]);
             var descriptor = splitted[1];
 
-            ConsumableTimeEnum intervalSelected = ConsumableTimeEnum.DAY;
-            foreach (ConsumableTimeEnum enumItem in ConsumableTimeEnum.GetAll())
+            ConsumableTime intervalSelected = ConsumableTime.DAY;
+            foreach (ConsumableTime consumableTime in ConsumableTime.GetAll())
             {
-                if (descriptor.Contains(enumItem.TimeDescriptor))
+                if (descriptor.Contains(consumableTime.TimeDescriptor))
                 {
-                    intervalSelected = enumItem;
+                    intervalSelected = consumableTime;
                     break;
                 }
             }

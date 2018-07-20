@@ -11,7 +11,7 @@ namespace StarWarsTravelStop.console
             try
             {
 
-            if (args.Length < 1)
+                if (args.Length < 1)
                 {
                     throw new ArgumentException("You need to inform the input distance");
                 }
